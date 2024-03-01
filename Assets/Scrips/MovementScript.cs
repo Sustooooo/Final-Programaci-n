@@ -48,9 +48,12 @@ public class MovementScript : MonoBehaviour
             float targetAngle;
             Vector3 moveDir;
 
-            targetAngle = Mathf.Atan2(move.x, move.z) * Mathf.Rad2Deg + camara.eulerAngles.y;
+            targetAngle = camara.eulerAngles.y;
+            moveDir = move.z * transform.forward + transform.right * move.x;
 
-            moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+            //targetAngle = Mathf.Atan2(move.x, move.z) * Mathf.Rad2Deg + camara.eulerAngles.y;
+
+            //moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
 
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnVelocitySmooth, turnSmoothTime);
 
